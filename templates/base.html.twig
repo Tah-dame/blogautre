@@ -4,8 +4,17 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
+    {% for flash in app.session.flashBag.get('notice') %} {# on appelle le notice qui est dans controller pour pouvoir l'afficher ici dans l'affichage html  #}
+        <div class="alert alert-danger" role="alert">
+        {{ flash }}
+        </div>
+            
+
+        {% endfor %}
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
